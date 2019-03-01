@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO">
+	<appenders>
+		<console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %p [%c] %t - %m%n" />
+		</console>
+		<RollingFile name="File" fileName="logs/tdbc-sample.log"
+			filePattern="logs/tdbc-sample-%d{MM-dd-yyyy}.log">
+			<PatternLayout pattern="%d %p [%c] %t - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB"/>
+			</Policies>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<Logger name="org.springframework" level="warn" />
+		<Logger name="org.hibernate.validator.internal.util.Version"
+			level="warn" />
+		<root level="info">
+			<appender-ref ref="Console" />
+			<appender-ref ref="File" />
+		</root>
+	</loggers>
+</configuration>
